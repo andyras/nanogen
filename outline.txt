@@ -14,6 +14,7 @@
 ##  Method for finding surface atoms
 #   Find number of nearest neighbors, bin accordingly
     have a certain tolerance
+#   Sort by distance from center
 #   Find atoms which *could* accommodate ligand if it were placed there
     this will determine surface sites available to determine coverage later on
 ##  Method to find origin
@@ -26,6 +27,7 @@
 #   -s seed for random surface site choosing
 #   -c % surface coverage
 #   -l ligand file
+#   -v van der Waals tolerance
 #   default parameter is input file of nanoparticle coordinates
 
 
