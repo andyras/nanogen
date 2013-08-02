@@ -1,0 +1,35 @@
+### Ligand object
+##  Parameters
+#   coordinates for each atom
+#   z axis
+#   angle of rotation
+##  Methods
+# rotate
+
+### Nano object
+##  Parameters
+#   Cartesian coordinates for each atom
+#   origin (center of nanoparticle)
+#   <vector> of surface atoms
+##  Method for finding surface atoms
+#   Find number of nearest neighbors, bin accordingly
+    have a certain tolerance
+#   Find atoms which *could* accommodate ligand if it were placed there
+    this will determine surface sites available to determine coverage later on
+##  Method to find origin
+#   average of x,y,z coordinates of all atoms
+##  Method to shift coordinates to center at origin
+
+
+### Main routine
+##  Parameters to pass
+#   -s seed for random surface site choosing
+#   -c % surface coverage
+#   -l ligand file
+#   default parameter is input file of nanoparticle coordinates
+
+
+### Routine to add ligand to nanoparticle
+##  takes ligand and nanoparticle as parameters
+##  choose a random available surface atom
+##  try to add ligand there (rotate as necessary)
