@@ -12,3 +12,9 @@ ligand.o: ligand.cpp ligand.hpp
 
 nano.o: nano.cpp nano.hpp
 	$(CXX) $(CXXFLAGS) -c nano.cpp
+
+.PHONY: clean
+
+clean:
+	rm -f *.o
+	rm -f nanogen

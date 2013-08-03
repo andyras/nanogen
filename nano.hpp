@@ -14,7 +14,7 @@ class Nano {
     Nano(const char * nanoFile = NULL);
     // methods
     void addLigand(const Ligand);
-    void writeCoords();
+    void writeCoords(const char * outFile);
   private:
     // all atoms in particle
     std::vector<Atom> atoms;
