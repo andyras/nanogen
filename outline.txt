@@ -20,6 +20,8 @@
 ##  Method to find origin
 #   average of x,y,z coordinates of all atoms
 ##  Method to shift coordinates to center at origin
+##  Method to add ligand
+#   
 
 
 ### Main routine
@@ -35,3 +37,12 @@
 ##  takes ligand and nanoparticle as parameters
 ##  choose a random available surface atom
 ##  try to add ligand there (rotate as necessary)
+
+### Ligand file format
+##  first line is denticity of ligand (1-3)
+##  second line is number of surface atoms bound
+#   1-3 for monodentate ligands
+#   1-2 for bidentate ligands
+#   1 for tridentate ligands
+##  next lines are atoms in .xyz format
+##  binding atoms must be arranged along cartesian z axis, such that -z is toward nanoparticle
