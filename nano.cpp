@@ -49,8 +49,8 @@ void Nano::addLigand(const Ligand) {
 void Nano::writeCoords(const char * outFile) {
   std::ofstream output(outFile);
   
-  // first two blank lines
-  output << std::endl << std::endl;
+  // first line is number of atoms, second is blank
+  output << atoms.size() << std::endl << std::endl;
 
   // one line for each atom
   for (int ii = 0; ii < atoms.size(); ii++) {
