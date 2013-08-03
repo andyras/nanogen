@@ -8,5 +8,6 @@ struct Atom {
   double x;
   double y;
   double z;
-}
+};
+
 #endif

@@ -1,6 +1,10 @@
 #ifndef __NANO__
 #define __NANO__
 
+#include <vector>
+#include <fstream>
+#include <iostream>
+
 #include "atom.hpp"
 #include "ligand.hpp"
 
@@ -9,12 +13,19 @@ class Nano {
     // default constructor
     Nano(const char * nanoFile = NULL);
     // methods
-    addLigand(const Ligand);
+    void addLigand(const Ligand);
+    void writeCoords();
   private:
     // all atoms in particle
-    vector<Atom> atoms;
+    std::vector<Atom> atoms;
     // surface atoms
-    vector<Atom> surfAtoms;
-}
+    std::vector<Atom> surfAtoms;
+    // origin
+    Atom origin;
+    //// methods
+    void setOrigin();
+    void shiftToOrigin();
+    void findSurfaceAtoms();
+};
 
 #endif
