@@ -1,5 +1,6 @@
 #define DEBUG_NANO
 
+#include "assert.h"
 #include "nano.hpp"
 
 Nano::Nano(const char * nanoFile) {
@@ -10,12 +11,11 @@ Nano::Nano(const char * nanoFile) {
   //// read in coordinate data from file
   std::ifstream data(nanoFile);
 
-  // the first two lines in the file don't matter
-  // TODO discard first two lines
   int nAtoms = 0;
   // first line should contain the number of atoms
   // FIXME assuming second line is blank for now
   data >> nAtoms;
+  assert(nAtoms > 0);
   atoms.resize(nAtoms);
 
   // placeholder atom
@@ -23,7 +23,12 @@ Nano::Nano(const char * nanoFile) {
 
   // for each line in the file, create an atom
   int atomCount = 0;
-  while (data >> a.element >> a.x >> a.y >> a.z) {
+  while ((atomCount < nAtoms) && (data >> a.element >> a.x >> a.y >> a.z)) {
+    if (atomCount == nAtoms) {
+      std::cerr << "ERROR: Number of atoms in the file " << nanoFile 
+	<< " is greater than the number in header ("
+	<< nAtoms << ")." << std::endl;
+    }
     atoms[atomCount] = a;
     atomCount++;
   }
@@ -32,7 +37,7 @@ Nano::Nano(const char * nanoFile) {
   if (nAtoms == 0 || atomCount == 0) {
     std::cerr << "ERROR: No atoms in file " << nanoFile << "." << std::endl;
   }
-  else if (atomCount < nAtoms) {
+  else if (atomCount != nAtoms) {
     std::cerr << "ERROR: Number of atoms in the file " << nanoFile 
       << " (" << atomCount << ") does not match number in header ("
       << nAtoms << ")." << std::endl;
